@@ -14,7 +14,7 @@ require('header.inc');
   //БД
   $hostname='localhost';
   $user='root';
-  $password='Qwerty123';
+  $password='';
   $db='mc';
 
   if(!$link = mysql_connect($hostname, $user, $password))
@@ -30,7 +30,7 @@ require('header.inc');
   }
   else
   {
-    echo '<br> Выбор БД успешен<br>'
+    echo '<br> Выбор БД успешен<br>';
   }
 ?>
 <html>
@@ -46,10 +46,10 @@ require('header.inc');
 $totalqty = 0;
 $totalamount = 0.00;
 
-$totalqty += $tireqty
-$totalqty += $oilqty
-$totalqty += $sparkqty
-$totalqty += $coldqty
+$totalqty += $tireqty;
+$totalqty += $oilqty;
+$totalqty += $sparkqty;
+$totalqty += $coldqty;
 
 define('TIREPRICE',65);
 define('OILPRICE',100);
@@ -88,17 +88,17 @@ $outputstring = $date."\t".$tireqty." шин \t".$oilqty." дисков\t"
                 ."\t".$date."\t".$address." Адрес доставки \t".$fio." ФИО клиента\n";
 //файл добавления
 $date_1 = date ('Y-m-d H:i:s',mktime());
-$query = 'insert into zakaz (fio, address, data) values ('$fio','$address','$date_1')';
+$query = "insert into zakaz (fio, address, data) values ('$fio','$address','$date_1')";
 $result = mysql_query ($query);
 
-$query_1 = 'select zakaz.id form zakaz where zakaz.fia='$fio'';
+$query_1 = "select zakaz.id form zakaz where zakaz.fia='$fio'";
 $result_1=mysql_query ($query_1);
 
 while ($row=mysql_fetch_array ($result_1))
 {
     $id=$row['id'];
 }
-$query = 'insert into tovar (id, tireqty, oilqty, sparkqty, coldqty) values ('$id', '$tireqty', '$oilqty', '$sparkqty', '$coldqty')';
+$query = "insert into tovar (id, tireqty, oilqty, sparkqty, coldqty) values ('$id', '$tireqty', '$oilqty', '$sparkqty', '$coldqty')";
 $result = mysql_query ($query);
 
 echo '<p>Заказ сохранен</p>';

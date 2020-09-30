@@ -11,20 +11,21 @@ require('header.inc');
 <h2>Автозапчасти</h2>
 <h3>Результаты заказа</h3>
 <?php
-    echo '<p> Заказ обработан в';
+    echo '<p> Заказ обработан в ';
     echo date('H:i, js F');
     echo '</p>';
 
-    $tireqty = $_POST[tireqty];
-    $oilqty = $_POST[oilqty];
-    $sparkqty = $_POST[sparkqty];
-    $coldqty = $_POST[coldqty];
+    $tireqty = $_POST['tireqty'];
+    $oilqty = $_POST['oilqty'];
+    $sparkqty = $_POST['sparkqty'];
+    $coldqty = $_POST['coldqty'];
+    $document_root = $_SERVER['DOCUMENT_ROOT'];
 
     echo '<p>Список Вашего заказа: </p>';
-    echo $tireqty - 'шин</br>';
-    echo $oilqty - 'дисков</br>';
-    echo $sparkqty - 'моторных масел</br>';
-    echo $coldqty - 'охлаждений</br>';
+    echo $tireqty , ' шин</br>';
+    echo $oilqty , ' дисков</br>';
+    echo $sparkqty , ' моторных масел</br>';
+    echo $coldqty , ' охлаждений</br>';
 
     $totalqty = 0;
     $totalqty = $tireqty + $oilqty + $sparkqty + $coldqty;
@@ -44,10 +45,10 @@ require('header.inc');
     echo 'Итого: $'.number_format($totalamount,3).'</br>';
     $taxrate = 0.10; //налог 10%
     $totalamount = $totalamount * (1 + $taxrate);
-    echo 'Всего, включая налог с продаж: $'.nember_format($totalamount,2).'</br>';
+    echo 'Всего, включая налог с продаж: $'.number_format($totalamount,2).'</br>';
 
 ?>
-На вопрос как Вы нашли нашу компанию был получен ответ: <? echo $find; ?>
+На вопрос как Вы нашли нашу компанию был получен ответ: <? echo $find ?>
 </body>
 </html>
 <?php

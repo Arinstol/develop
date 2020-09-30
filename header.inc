@@ -2,12 +2,10 @@
 <meta charset="utf-8">
 <head>
 <title>РГТЭУ Кемеровсктй институт</title>
-<meta http-equiv="Content-Type” content="text/html; charset=windows=1251">
-<META name="Author™ content="http://ailus.ru"><meta name="Copyright" content="http://ailus.ru">
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" rightmargin="0" bottommargin="0" bgcolor="#ffffff">
-<link href="images/index.ccs" type="text/css" rel="stylesheet"
+<link type="text/css" rel="stylesheet">
 <table border=1 width=100% height=20%>
 <td width=100% height=20% align=center> Лабораторные работы по курсу "Разработка интернет приложений в сфере коммерции посредством PHP и MySQl" <br>Студента группы ПИс-181: Баяновой Ульяны Сергеевны <br> Проверил: Киринберг А.Г.</td>
 </table>

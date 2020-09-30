@@ -70,7 +70,7 @@ require('header.inc');
 
     $outputstring = $date."\t".$tireqty." шин \t".$oilqty." дисков\t"
                     .$sparkqty." моторных масел\t".$coldqty." охлаждений\t\$".$totalamount
-                    ."\t".$date."\t".$address." Адрес доставки \t".$fio." ФИО клиента\n";
+                    ."\t".$date."\t" .$fio." ФИО клиента\t".$address." Адрес доставки\n";
 
     // открытие файла добавления
     @$fp = fopen("orders.txt", 'ab');
