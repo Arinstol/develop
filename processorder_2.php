@@ -8,6 +8,7 @@ require('header.inc');
   $sparkqty = (int) $_POST['sparkqty'];
   $coldqty = (int) $_POST['coldqty'];
   $address = preg_replace('/\t|\R/',' ',$_POST['address']);
+  $fio = $_POST['fio'];
   $date = date('H:i, jS F Y');
 ?>
 <html>
@@ -70,7 +71,7 @@ require('header.inc');
 
     $outputstring = $date."\t".$tireqty." шин \t".$oilqty." дисков\t"
                     .$sparkqty." моторных масел\t".$coldqty." охлаждений\t\$".$totalamount
-                    ."\t".$date."\t" .$fio." ФИО клиента\t".$address." Адрес доставки\n";
+                    ."\t".$date."\t" .$fio." ФИО клиента\t".$address." Адрес доставки \n";
 
     // открытие файла добавления
     @$fp = fopen("orders.txt", 'ab');

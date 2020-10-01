@@ -1,3 +1,4 @@
+<?php ini_set('display_errors', 1); ?>
 <?php
 require('header.inc');
 ?>
@@ -37,18 +38,15 @@ else
 {
 echo '<br> Выбор БД успешен<br>';
 }
-
-$query_1 = 'select zakaz.id, zakaz.fio, zakaz.address, zakaz.data, tavar.id, tovar.tireqty, tovar.oilqty, tovar.sparkqty, tovar.coldqty FROM zakaz, tovar where zakaz.id = tovar.id order by zakaz.data';
+$query_1 = 'select `za`.`id`, `za`.`fio`, `za`.`address`, `za`.`data`, `t`.`id`, `t`.`tireqty`, `t`.`oilqty`, `t`.`sparkqty`, `t`.`coldqty` FROM `zakaz` as `za`, `tovar` as `t` where `za`.`id` = `t`.`id` order by `za`.`data`';
 $result_1 = mysql_query ($query_1);
-
 ?>
-
-<table border=1 color=black width=100% height=100%>
+<table border=1 color=black width=100 height=100>
 <tr>
 <td><b>№</b></td><td><b>ФИО</b></td><td><b>Адрес</b></td><td><b>Дата заказа</b></td><td><b>шины</b></td><td><b>диски</b></td><td><b>моторные масла</b></td><td><b>охлаждения</b></td>
-
 <?
-while ($row_1 = mysql_fetch_array ($result_1)) {
+while ($row_1 = mysql_fetch_array ($result_1))
+{
 $id=$row_1['id'];
 $fio=$row_1['fio'];
 $address=$row_1['address'];
@@ -58,21 +56,11 @@ $oilqty=$row_1['oilqty'];
 $sparkqty=$row_1['sparkqty'];
 $coldqty=$row_1['coldqty'];
 ?></tr>
-
 <tr><td><? echo $id ?></td><td><? echo $fio ?></td><td><? echo $address ?></td><td><? echo $data ?></td><td><? echo $tireqty ?></td><td><? echo $oilqty ?></td><td><? echo $sparkqty ?></td><td><? echo $coldqty ?></td>
 </tr>
-
 <?
-
 }
-
-?> </table> <?
-
-
-
-
-
-?>
+?> </table> 
 </body>
 </html>
 <?php

@@ -20,6 +20,7 @@ require('header.inc');
     $sparkqty = $_POST['sparkqty'];
     $coldqty = $_POST['coldqty'];
     $document_root = $_SERVER['DOCUMENT_ROOT'];
+    $find = $_POST['find'];
 
     echo '<p>Список Вашего заказа: </p>';
     echo $tireqty , ' шин</br>';

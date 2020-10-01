@@ -8,24 +8,25 @@ require('header.inc');
   $sparkqty = (int) $_POST['sparkqty'];
   $coldqty = (int) $_POST['coldqty'];
   $address = preg_replace('/\t|\R/',' ',$_POST['address']);
+  $fio = $_POST['fio'];
   $date = date('H:i, jS F Y');
   $DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 
   //БД
-  $hostname='localhost';
+  $hostname='localhost:3306';
   $user='root';
   $password='';
   $db='mc';
 
   if(!$link = mysql_connect($hostname, $user, $password))
     {
-      //echo '<br> не могу соединиться с серваком БД<br>'  
+      echo '<br> не могу соединиться с серваком БД<br>';  
       exit();
     }
   
   if(!mysql_select_db($db, $link))
   {
-      //echo '<br> не могу выбрать БД<br>'  
+      echo '<br> не могу выбрать БД<br>';  
       exit();
   }
   else
@@ -88,17 +89,26 @@ $outputstring = $date."\t".$tireqty." шин \t".$oilqty." дисков\t"
                 ."\t".$date."\t".$address." Адрес доставки \t".$fio." ФИО клиента\n";
 //файл добавления
 $date_1 = date ('Y-m-d H:i:s',mktime());
-$query = "insert into zakaz (fio, address, data) values ('$fio','$address','$date_1')";
-$result = mysql_query ($query);
-
-$query_1 = "select zakaz.id form zakaz where zakaz.fia='$fio'";
-$result_1=mysql_query ($query_1);
-
-while ($row=mysql_fetch_array ($result_1))
+$query = "insert into `zakaz` (`fio`, `address`, `data`) values ('$fio','$address','$date_1')";
+$result = mysql_query($query);
+$query_1 = "SELECT `id` FROM `zakaz` WHERE `fio`='$fio'";
+//вывод если что-то не insert
+//echo($query); 
+//echo($query_1);
+$result_1=mysql_query($query_1);
+//echo($result_1);
+while ($row = mysql_fetch_array($result_1))
 {
+  echo($row);
     $id=$row['id'];
 }
-$query = "insert into tovar (id, tireqty, oilqty, sparkqty, coldqty) values ('$id', '$tireqty', '$oilqty', '$sparkqty', '$coldqty')";
+
+//для проверки ошибок добавления в бд
+//$result = mysql_query($row) || die(mysql_error()); 
+
+$query = "insert into `tovar` (`id`, `tireqty`, `oilqty`, `sparkqty`, `coldqty`) values ('$id', '$tireqty', '$oilqty', '$sparkqty', '$coldqty')";
+//вывод если что-то не insert
+//echo($query);
 $result = mysql_query ($query);
 
 echo '<p>Заказ сохранен</p>';
