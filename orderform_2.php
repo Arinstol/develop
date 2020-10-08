@@ -12,6 +12,7 @@ require('header.inc');
 <h3>Форма заказа</h3>
 <form action="processorder_2.php" method=post>
 <table border=0>
+<link rel='stylesheet' href='style.css' />
 <tr bgcolor=#CCCCCC>
 	<td width=150>Товар</td>
 	<td width=15>Количество</td>

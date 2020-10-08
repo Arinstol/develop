@@ -1,8 +1,44 @@
 <?php
-require('header.inc');
-?>
+//echo "$tireqty";
+//echo "$oilqty';
+require ('page_5.inc');
+class OrderformPage extends Page
+{
+var $row2buttons = array('Re-engineering' => 'reengineering.php',
+						 'Standards Compliance' => 'standards.php', 
+						 'Buzzword Compliance' => 'buzzword.php',
+						 'Mission Statements' => 'mission.php' );
+// var $tireqty ;
+// var $oilqty ;
+// var $sparkqty ;
+// var $coldqty ;
+// var $address ;
+// var $fio ;
+function Display_1($tireqty)
+{
+//$this->tireqty=$tireqty ;
+//echo $this->tireqty; 
+echo $tireqty; }
+function Display($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $addresss, $document_root)
+{
+echo "<html>\n<head>\n";
+$this -> DisplayTitle();
+$this -> DisplayKeywords();
+$this -> Displaystyles();
+echo "</head>\n<body>\n";
+$this -> DisplayHeader();
+$this -> DisplayMenu($this->buttons);
+$this -> DisplayMenu($this->row2buttons);
+?> 
+<table width=100% height=100% border=1><tr><td class=cont > <? echo $this->zakaz ($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $address, $document_root); ?> </td></table>
+<?
+$this -> DisplayFooter();
+echo "</body>\n</html>\n";
+}
+function zakaz($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $addresss, $document_root) 
+{
 
-<?php
+// <?php
   $tireqty = (int) $_POST['tireqty'];
   $oilqty = (int) $_POST['oilqty'];
   $sparkqty = (int) $_POST['sparkqty'];
@@ -13,7 +49,7 @@ require('header.inc');
   $DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 
   //БД
-  $hostname='localhost:3306';
+  $hostname='localhost';
   $user='root';
   $password='';
   $db='mc';
@@ -34,13 +70,14 @@ require('header.inc');
     echo '<br> Выбор БД успешен<br>';
   }
 ?>
+
 <html>
 <head>
 	<title>Автозапчасти</title>
 </head>
 
 <body>
-<h1>Лабораторная работа №3 по теме сохранение и восстановление данных посредством СУБД - MySQL</h1>
+<h1>Осуществление разбивки Веб-окна посредством использования технологии ООП</h1>
 <h2>Автозапчасти</h2>
 <h3>Результаты заказа</h3>
 <?php
@@ -97,9 +134,10 @@ $query_1 = "SELECT `id` FROM `zakaz` WHERE `fio`='$fio'";
 //echo($query_1);
 $result_1=mysql_query($query_1);
 //echo($result_1);
+
 while ($row = mysql_fetch_array($result_1))
 {
-//  echo($row);
+
     $id=$row['id'];
 }
 
@@ -113,9 +151,13 @@ $result = mysql_query ($query);
 
 echo '<p>Заказ сохранен</p>';
 ?>
-<a href='vieworders_3.php'>Интерфейс персонала для просмотра файла заказов</a>
-</body>
-</html>
-<?php
-require('footer.inc');
+<a href='vieworders_5.php'>Интерфейс персонала для просмотра файла заказов</a>
+<?}}
+$services = new orderformPage();
+$content ='cddc';
+$services -> SetContent($content);
+$services -> SetTitle('Лобораторная работа по теме: ООП на PHP');
+$services -> Setnazvanie('Лабораторные работы по курсу разработка интернет приложений в сфере коммерции посредством PHP и MySQL <br> Студента группы ПИс-181: Баянова Ульяна Сергеевна <br> Проверил: Киринберг');
+$services -> Display($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $addresss, $document_root);
+//$services -> zakaz($tireqty, $oilqty);
 ?>
