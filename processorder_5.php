@@ -31,13 +31,13 @@ $this -> DisplayMenu($this->buttons);
 $this -> DisplayMenu($this->row2buttons);
 ?> 
 <table width=100% height=100% border=1><tr><td class=cont > <? echo $this->zakaz ($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $address, $document_root); ?> </td></table>
+<table width=100% height=100% border=1><tr><td class=cont > <? echo $this->zakaz($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $address, $document_root); ?> </td></table>
 <?
 $this -> DisplayFooter();
 echo "</body>\n</html>\n";
 }
 function zakaz($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $addresss, $document_root) 
 {
-
 // <?php
   $tireqty = (int) $_POST['tireqty'];
   $oilqty = (int) $_POST['oilqty'];
@@ -49,6 +49,16 @@ function zakaz($tireqty, $oilqty, $sparkqty, $coldqty, $fio, $addresss, $documen
   $DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 
   //БД
+//<?php
+//$tireqty = (int) $_POST['tireqty'];
+//$oilqty = (int) $_POST['oilqty'];
+//$sparkqty = (int) $_POST['sparkqty'];
+//$coldqty = (int) $_POST['coldqty'];
+//$address = preg_replace('/\t|\R/',' ',$_POST['address']);
+//$fio = $_POST['fio'];
+//$date = date('H:i, jS F Y');
+//$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
+//БД
   $hostname='localhost';
   $user='root';
   $password='';
@@ -134,9 +144,12 @@ $query_1 = "SELECT `id` FROM `zakaz` WHERE `fio`='$fio'";
 //echo($query_1);
 $result_1=mysql_query($query_1);
 //echo($result_1);
+while ($row = mysql_fetch_array($result_1))
+{
 
 while ($row = mysql_fetch_array($result_1))
 {
+  echo($row);
 
     $id=$row['id'];
 }

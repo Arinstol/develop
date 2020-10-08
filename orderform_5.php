@@ -58,6 +58,11 @@ $content ='
 <tr>
 	<td>Адрес доставки</td>
 	<td align="left"><input type="text" name="address" size="40" maxlenght="3"></td>
+	<td align="left"><input type="text" name="fio" size="3" maxlenght="3"></td>
+</tr>
+<tr>
+	<td>Адрес доставки</td>
+	<td align="left"><input type="text" name="address" size="3" maxlenght="3"></td>
 </tr>
 <tr>
 	<td colspan="2" align="center"><input type="submit" value="Отправить заказ"></td>
